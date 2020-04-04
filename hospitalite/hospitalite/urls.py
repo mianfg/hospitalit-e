@@ -16,6 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from hospitalite.views import registro
+from hospitalite.views import login
+from hospitalite.views import logout
+from hospitalite.views import modificar_datos
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('registro/', registro.index, name="registro"),
+    path('login/', login.index, name="login"),
+    path('logout/', logout.index, name="logout"),
+    path('modificar_datos/', modificar_datos.index, name="modificar_datos")
 ]
