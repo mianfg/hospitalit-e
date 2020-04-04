@@ -2,3 +2,4 @@ hospitalite/db.sqlite3
 hospitalite/hospitalite/__pycache__
 migrations/
 hospitalite/hospitalite/views/__pycache__/
+venv/
