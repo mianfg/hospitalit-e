@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'phone_field',
     'hospitalite'
 ]
 
@@ -121,3 +122,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'hospitalite.Usuario'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_URL = '/login/'
