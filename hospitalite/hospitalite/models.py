@@ -13,11 +13,7 @@ class Usuario (AbstractUser):
     localidad = models.CharField(max_length = 20)
     skype = models.CharField(max_length = 15)
     facetime = models.CharField(max_length = 20)
-<<<<<<< HEAD
-    edad = models.IntegerField(default=0)
-=======
     edad = models.IntegerField(default=-1)
->>>>>>> 9f529303d3d956ebb55cd1d72b941277842a06fe
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
