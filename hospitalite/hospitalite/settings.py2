@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'phone_field',
+    'channels', # WebSockets
     'hospitalite'
 ]
 
@@ -53,6 +53,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'hospitalite.urls'
+ASGI_APPLICATION = 'hospitalite.routing.application'
 
 TEMPLATES = [
     {
@@ -122,5 +123,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'hospitalite.Usuario'
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-LOGIN_URL = '/login/'

@@ -1,10 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
 <h2>Iniciar sesión</h2>
 
-<form method="POST">
-    {{ form.as_p }}
+{% if error_login %}
+<div class="alert alert-danger" role="alert">
+    El voluntario aún no está verificado
+</div>
+{% endif %}
+
+<form method="POST" class="form-group">
     {% csrf_token %}
-    <button type="submit">Login</button>
+	{{ form|crispy }}
+    <button type="submit" class="btn btn-success">Login</button>
 </form>
 
 <hr />
 <a href="/registro">Registrar usuario</a>
+{% endblock %}
