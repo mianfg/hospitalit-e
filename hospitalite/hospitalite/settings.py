@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels', # WebSockets
     'crispy_forms',
     'phone_field',
     'hospitalite'
@@ -53,6 +54,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'hospitalite.urls'
+ASGI_APPLICATION = 'hospitalite.routing.application'
 
 TEMPLATES = [
     {
