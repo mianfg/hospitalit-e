@@ -4,10 +4,71 @@
 {% block content %}
 <h2>Crear una cuenta</h2>
 
-    <form method="POST" class="form-group">
-	{% csrf_token %}
-	{{ form|crispy }}
-	<hr />
-	<button type="submit" class="btn btn-success">Registrarse</button>
-    </form>
+<div class="row justify-content-center" id="prompt">
+	<div class="col-xl-8 col-lg-9 col-md-10">
+		<div class="card card-body bg-white justify-content-around">
+			{% if error %}
+				<div class="alert alert-danger" role="alert">
+    				{{error}}
+				</div>
+			{% endif %}
+			<form method="POST" class="form-group">
+				{% csrf_token %}
+				<h5>Datos personales</h5>
+				<div class="form-row">
+					<div class="form-group col-md-6 mb-0">
+						{{ form.username|as_crispy_field }}
+					</div>
+					<div class="form-group col-md-6 mb-0">
+						{{ form.dni|as_crispy_field }}
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6 mb-0">
+						{{ form.first_name|as_crispy_field }}
+					</div>
+					<div class="form-group col-md-6 mb-0">
+						{{ form.last_name|as_crispy_field }}
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6 mb-0">
+						{{ form.localidad|as_crispy_field }}
+					</div>
+					<div class="form-group col-md-6 mb-0">
+						{{ form.provincia|as_crispy_field }}
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6 mb-0">
+						{{ form.edad|as_crispy_field }}
+					</div>
+					<div class="form-group col-md-6 mb-0">
+					</div>
+				</div>
+				<br/>
+				<h5>Datos de contacto</h5>
+				<div class="form-row">
+					<div class="form-group col-md-6 mb-0">
+						{{ form.skype|as_crispy_field }}
+					</div>
+					<div class="form-group col-md-6 mb-0">
+						{{ form.facetime|as_crispy_field }}
+					</div>
+				</div>
+				<br/>
+				<h5>PIN de acceso</h5>
+				<div class="form-row">
+					<div class="form-group col-md-6 mb-0">
+						{{ form.password1|as_crispy_field }}
+					</div>
+					<div class="form-group col-md-6 mb-0">
+						{{ form.password2|as_crispy_field }}
+					</div>
+				</div>
+				<button type="submit" class="btn btn-success">Registrarse</button>
+			</form>
+		</div>
+	</div>
+</div>
 {% endblock %}
