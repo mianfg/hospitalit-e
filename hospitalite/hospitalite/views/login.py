@@ -26,15 +26,19 @@ def index(request):
                     voluntario = Voluntario.objects.get(username=username)
                     if voluntario is not None:
                         if not voluntario.verificado:
-                            return render(request, "login.html", {'form': form, 'error_login': True}) 
+                            return render(request, "login.html", {'form': form, 'error': "El voluntario no está aún verificado. Por favor, espere a que se le comunique"}) 
                 except ObjectDoesNotExist:
                     pass
+                finally:
+                    # Hacemos el login manualmente
+                    do_login(request, user)
+                    # Y le redireccionamos a la portada
+                    return redirect('/')
+
+            else:
+                return render(request, "login.html", {'form': form, 'error': "El usuario o el PIN no es correcto"})
 
                 
-                # Hacemos el login manualmente
-                do_login(request, user)
-                # Y le redireccionamos a la portada
-                return redirect('/')
 
     # Si llegamos al final renderizamos el formulario
-    return render(request, "login.html", {'form': form, 'error_login': False})
+    return render(request, "login.html", {'form': form, 'error': None})
