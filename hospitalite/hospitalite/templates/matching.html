@@ -2,219 +2,398 @@
 
 {% block content %}
 <div class="row justify-content-center" id="prompt">
-    <div class="col-xl-8 col-lg-9 col-md-10">
-        <div class="card card-body bg-white justify-content-around">
-            <h2>¡Hola, {{ first_name }}!</h2>
-            <div class="lead" style="margin-bottom:30px">
-                {{ text }}
-            </div>
-            <a role="button" class="btn btn-lg btn-primary" id="go">
-                <nobr>{{ button_text }}&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></nobr>
-            </a>
-        </div>
-    </div>
+	<div class="col-xl-8 col-lg-9 col-md-10">
+		<div class="card card-body bg-white justify-content-around">
+			<h2>¡Hola, {{ first_name }}!</h2>
+			<div class="lead" style="margin-bottom:30px">
+				{{ text }}
+			</div>
+			<a href="#" role="button" class="btn btn-lg btn-primary" id="go">
+				<nobr>{{ button_text }}&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></nobr>
+			</a>
+		</div>
+	</div>
 </div>
 <div class="row justify-content-center" id="loading">
-    <div class="col-xl-8 col-lg-9 col-md-10">
-        <div class="card card-body bg-white justify-content-around">
-            <div class="flex-row flex-wrap"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
-            <h5>Buscando...</h5>
-            <p>{{ search_text }}</p>
-            <p><strong>Por favor, no cierre esta pestaña</strong></p>
-        </div>
-    </div>
+	<div class="col-xl-8 col-lg-9 col-md-10">
+		<div class="card card-body bg-white justify-content-around">
+			<div class="flex-row flex-wrap">
+				<div class="lds-ring">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+			<h5>Buscando...</h5>
+			<p>{{ search_text }}</p>
+			<p><strong>Por favor, no cierre esta pestaña</strong></p>
+		</div>
+	</div>
 </div>
 <div class="row justify-content-center" id="match">
-    <div class="col-xl-8 col-lg-9 col-md-10">
-        <div class="card card-body text-black justify-content-around">
-            
-            <h5 class="text-black pb-0 b-0" style="margin-bottom: 5px" id="match-nombre"></h5>
-            <p style="font-size:18px; color:#53575e" id="match-location"></p>
-            <p style="font-size:18px; color:#53575e" id="match-edad"></p>
-            
-            <div class="card flex-row flex-wrap justify-content-around" style="border:0px">
-                <p></p>
-                <ul class="list-unstyled p-0">
-                    <li class="my-3">
-                      <div class="d-flex align-items-center">
-                        <div class="rounded-circle bg-success-alt">
-                            <i class="fa fa-skype" style="margin:10px"></i>
-                        </div>
-                        <p class="mb-0 ml-3" id="match-social-skype"></p>
-                      </div>
-                    </li>
-                    <li class="my-3">
-                        <div class="d-flex align-items-center">
-                          <div class="rounded-circle bg-success-alt">
-                              <i class="fa fa-apple" style="margin:10px"></i>
-                          </div>
-                          <p class="mb-0 ml-3" id="match-social-facetime"></p>
-                        </div>
-                      </li>
-                  </ul>
-                <p></p>
-            </div>
+	<div class="col-xl-8 col-lg-9 col-md-10">
+		<div class="card card-body text-black justify-content-around">
 
-            <div class="col text-center">
-                <a class="btn btn-primary" style="width: 200px" href="#" role="button" id="match-callurl">Sala de Jitsi Meet</a>
-            </div>
-            
-            <hr/>
+			<h5 class="text-black pb-0 b-0" style="margin-bottom: 5px" id="match-nombre"></h5>
+			<p style="font-size:18px; color:#53575e" id="match-location"></p>
+			<p style="font-size:18px; color:#53575e" id="match-edad"></p>
 
-            <div class="mr-2 mb-2">
-                <a href="#" class="badge badge-info badge-pill" data-toggle="modal" data-target="#rate" id="match-end">Contacto finalizado</a>
-            </div>
+			<div class="card flex-row flex-wrap justify-content-around" style="border:0px">
+				<p></p>
+				<ul class="list-unstyled p-0">
+					<li class="my-3">
+						<div class="d-flex align-items-center">
+							<div class="rounded-circle bg-success-alt">
+								<i class="fa fa-skype" style="margin:10px"></i>
+							</div>
+							<p class="mb-0 ml-3" id="match-social-skype"></p>
+						</div>
+					</li>
+					<li class="my-3">
+						<div class="d-flex align-items-center">
+							<div class="rounded-circle bg-success-alt">
+								<i class="fa fa-apple" style="margin:10px"></i>
+							</div>
+							<p class="mb-0 ml-3" id="match-social-facetime"></p>
+						</div>
+					</li>
+				</ul>
+				<p></p>
+			</div>
 
-        </div>
-    </div>
+			<div class="col text-center">
+				<a class="btn btn-primary" style="width: 200px" href="#" role="button" id="match-callurl">Sala de Jitsi
+					Meet</a>
+			</div>
+
+			<hr />
+
+			<div class="mr-2 mb-2">
+				<a href="#" class="badge badge-info badge-pill" data-toggle="modal" data-target="#rate"
+					id="match-end">Contacto
+					finalizado</a>
+			</div>
+
+		</div>
+	</div>
 </div>
 <div class="row justify-content-center pt-4">
-    <a href="/modificar_datos">Modificar perfil</a><div style="padding-right:40px"></div><a href="/logout">Cerrar sesión</a>
+	<a class="text-white" href="/modificar_datos">Modificar perfil</a>
+	<div style="padding-right:40px"></div><a class="text-white" href="/logout">Cerrar sesión</a>
 </div>
 {% endblock %}
 
 {% block additional_scripts %}
-<!-- WebSocket scripts -->
 <script>
-    $(document).ready(function () {
-        showPrompt()
-    })
-    
-    var loc = window.location
+	var $stars;
+	var $current_star = -1;
 
-    var wsStart = 'ws://'
-    if (loc.protocol == 'https:')
-        wsStart = 'wss://'
-    var endpoint = wsStart + loc.host + loc.pathname
-    var socket = new WebSocket(endpoint)
-    var on_search = false
+	jQuery(document).ready(function ($) {
+		$("#rate-notification").hide()
 
-    var group = 'unknown'
+		// Custom whitelist to allow for using HTML tags in popover content
+		var myDefaultWhiteList = $.fn.tooltip.Constructor.Default.whiteList
+		myDefaultWhiteList.textarea = [];
+		myDefaultWhiteList.button = [];
 
-    socket.onmessage = function (e) {
-        console.log('onmessage', e)
-        var message = JSON.parse(e['data'])
+		$stars = $('.rate-popover');
 
-        switch (message['type']) {
-            case "connect":
-                group = message['group']
-                doConnect()
-                break
-            case "queued":
-                doQueued()
-                if (group == "voluntario")
-                    checkMatches()
-                break
-            case "match":
-                doMatch(message)
-                break
-            case "new_no_voluntario":
-                checkMatches()
-                break
-            default:
-                console.log(messsage['type'])
-                break
-        }
+		$stars.on('mouseover', function () {
+			var index = $(this).attr('data-index');
+			markStarsAsActive(index);
+		});
 
-    }
-    socket.onopen = function (e) {
-        console.log("Opened WebSocket:", e)
-    }
-    socket.onclose = function (e) {
-        console.log("onclose", e)
-    }
-    socket.onerror = function (e) {
-        console.log("onerror", e)
-    }
+		$stars.on('click', function () {
+			var index = $(this).attr('data-index');
+			$current_star = index;
+		})
 
-    function doConnect() {
-        console.log("Conectado como " + group)
-    }
+		$stars.on('mouseout', function () {
+			markStarsAsActive($current_star);
+		})
 
-    function doQueued() {
-        showLoading()
-        on_search = true
-    }
+		function markStarsAsActive(index) {
+			unmarkActive();
 
-    function doMatch(message) {
-        on_search = false
-        data = JSON.parse(message['info'])
+			for (var i = 0; i <= index; i++) {
+				$($stars.get(i)).removeClass('fa-meh-blank');
+				$($stars.get(i)).addClass('live');
+				switch (index) {
+					case '0':
+						$($stars.get(i)).addClass('fa-angry');
+						break;
+					case '1':
+						$($stars.get(i)).addClass('fa-frown');
+						break;
+					case '2':
+						$($stars.get(i)).addClass('fa-meh');
+						break;
+					case '3':
+						$($stars.get(i)).addClass('fa-smile');
+						break;
+					case '4':
+						$($stars.get(i)).addClass('fa-laugh');
+						break;
+				}
+			}
+		}
 
-        $("#match-nombre").text(data['first_name']+' '+data['second_name'])
-        $("#match-edad").text(data['edad']+" años")
-        $("#match-location").text(data['localidad']+", "+data['provincia'])
-        $("#match-social-skype").text(data['skype'])
-        $("#match-social-facetime").text(data['facetime'])
-        document.getElementById("match-callurl").href = 'https://meet.jit.si/' + data['uuid']
+		function unmarkActive() {
+			$stars.addClass('fa-meh-blank');
+			$stars.removeClass('fa-angry fa-frown fa-meh fa-smile fa-laugh live');
+		}
 
-        showMatch()
-    }
+		$stars.on('click', function () {
+			$stars.popover('hide');
+		});
 
-    function queue() {
+		// Submit, you can add some extra custom code here
+		// ex. to send the information to the server
+		$('#rateMe').on('click', '#voteSubmitButton', function () {
+			$stars.popover('hide');
+		});
 
-        message = {
-            "type": "do_queue"
-        }
-        socket.send(JSON.stringify(message))
-    }
+		// Cancel, just close the popover
+		$('#rateMe').on('click', '#closePopoverButton', function () {
+			$stars.popover('hide');
+		});
 
-    function checkMatches() {
-        if (on_search) {
-            message = {
-                "type": "check_matches"
-            }
-            socket.send(JSON.stringify(message))
-        }
-    }
+	});
 
-    document.getElementById("go").onclick = function () {
-        queue()
-    }
+	document.getElementById("rate-send").onclick = function () {
+		if ($current_star == -1) {
+			$("#rate-notification").show()
+		} else {
+			message = {
+				"type"		: "rating",
+				"match_id"	: $match_id,
+				"from"		: $current_user,
+				"to"		: $match_user,
+				"rating"	: $current_star,
+				"comment"	: $("#rate-comment").val()
+			}
+			console.log("message to send: ", message)
+			$socket.send(JSON.stringify(message))
+			window.location.href = "/";
+		}
+	}
 
-    function showPrompt() {
-        $("#prompt").show()
-        $("#loading").hide()
-        $("#match").hide()
-    }
+	$(function () {
+		/**$('.rate-popover').popover({
+		  // Append popover to #rateMe to allow handling form inside the popover
+		  container: '#rateMe',
+		  // Custom content for popover
+		  content: `<div class="my-0 py-0"> <textarea type="text" style="font-size: 0.78rem" class="md-textarea form-control py-0" placeholder="Write us what can we improve" rows="3"></textarea> <button id="voteSubmitButton" type="submit" class="btn btn-sm btn-primary">Submit!</button> <button id="closePopoverButton" class="btn btn-flat btn-sm">Close</button>  </div>`
+		});*/
+		$('.rate-popover').tooltip();
+	});
+</script>
 
-    function showLoading() {
-        $("#prompt").hide()
-        $("#loading").show()
-        $("#match").hide()
-    }
+<!-- Web$socket scripts -->
+<script>
+	$(document).ready(function () {
+		showPrompt()
+		$('#rate-comment').val("")
+	})
 
-    function showMatch() {
-        $("#prompt").hide()
-        $("#loading").hide()
-        $("#match").show()
-    }
+	var loc = window.location
+
+	var wsStart = 'ws://'
+	if (loc.protocol == 'https:')
+		wsStart = 'wss://'
+	var endpoint = wsStart + loc.host + loc.pathname
+	$socket = new WebSocket(endpoint)
+	var on_search = false
+
+	var group = 'unknown'
+
+	$socket.onmessage = function (e) {
+		console.log('onmessage', e)
+		var message = JSON.parse(e['data'])
+
+		switch (message['type']) {
+			case "connect":
+				group = message['group']
+				$current_user = message['username']
+				doConnect()
+				break
+			case "queued":
+				doQueued()
+				if (group == "voluntario")
+					checkMatches()
+				break
+			case "match":
+				doMatch(message)
+				break
+			case "new_no_voluntario":
+				checkMatches()
+				break
+			default:
+				console.log(messsage['type'])
+				break
+		}
+
+	}
+	$socket.onopen = function (e) {
+		console.log("Opened Web$socket:", e)
+	}
+	$socket.onclose = function (e) {
+		console.log("onclose", e)
+	}
+	$socket.onerror = function (e) {
+		console.log("onerror", e)
+	}
+
+	function doConnect() {
+		console.log("Conectado como " + group)
+	}
+
+	function doQueued() {
+		showLoading()
+		on_search = true
+	}
+
+	function doMatch(message) {
+		on_search = false
+		data = JSON.parse(message['info'])
+		$match_user = data['username']
+		$match_id = data['match_id']
+		console.log("match id is: ", data['match_id'])
+		$("#match-nombre").text(data['first_name'] + ' ' + data['second_name'])
+		$("#match-edad").text(data['edad'] + " años")
+		$("#match-location").text(data['localidad'] + ", " + data['provincia'])
+		$("#match-social-skype").text(data['skype'])
+		$("#match-social-facetime").text(data['facetime'])
+		document.getElementById("match-callurl").href = 'https://meet.jit.si/' + data['uuid']
+
+		showMatch()
+	}
+
+	function queue() {
+
+		message = {
+			"type": "do_queue"
+		}
+		$socket.send(JSON.stringify(message))
+	}
+
+	function checkMatches() {
+		if (on_search) {
+			message = {
+				"type": "check_matches"
+			}
+			$socket.send(JSON.stringify(message))
+		}
+	}
+
+	document.getElementById("go").onclick = function () {
+		queue()
+	}
+
+	function showPrompt() {
+		$("#prompt").show()
+		$("#loading").hide()
+		$("#match").hide()
+	}
+
+	function showLoading() {
+		$("#prompt").hide()
+		$("#loading").show()
+		$("#match").hide()
+	}
+
+	function showMatch() {
+		$("#prompt").hide()
+		$("#loading").hide()
+		$("#match").show()
+	}
+</script>
+
+<script>
+var text_max = 140;
+$('#count_message').html('0 / ' + text_max );
+
+$('#rate-comment').keyup(function() {
+  var text_length = $('#rate-comment').val().length;
+  var text_remaining = text_max - text_length;
+  
+  $('#count_message').html(text_length + ' / ' + text_max);
+
+  if ( text_length == text_max )
+	document.getElementById('count_message').className = "badge badge-danger mt-2"
+  else
+    document.getElementById('count_message').className = "badge badge-light mt-2"
+});
 </script>
 {% endblock %}
 
 {% block additional_modals %}
 <div class="modal fade" id="rate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle"><i
-                    class="fa fa-star"></i>&nbsp;&nbsp;&nbsp;Valora tu experiencia</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col">
-                    <p>Por favor, <strong>indica cómo de agradable ha sido tu experiencia</strong> con {{ first_name }}.</p>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" id="rate-send">Enviar</button>
-        </div>
-    </div>
-</div>
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-star"></i>&nbsp;&nbsp;&nbsp;Valora tu
+					experiencia</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col">
+						<p>Por favor, <strong>indica cómo de agradable ha sido tu experiencia</strong>.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xl-6 col-lg-8">
+						<div class="container">
+							<div class="row justify-content-center text-center py-4 px-0" style="font-size:50px">
+								<div class="col-10">
+									<span id="rateMe">
+										<i class="far fa-meh-blank py-2 px-1 rate-popover" data-index="0"
+											data-html="true" data-toggle="popover" data-placement="top"
+											title="Muy mal"></i>
+										<i class="far fa-meh-blank py-2 px-1 rate-popover" data-index="1"
+											data-html="true" data-toggle="popover" data-placement="top" title="Mal"></i>
+										<i class="far fa-meh-blank py-2 px-1 rate-popover" data-index="2"
+											data-html="true" data-toggle="popover" data-placement="top"
+											title="Bien"></i>
+										<i class="far fa-meh-blank py-2 px-1 rate-popover" data-index="3"
+											data-html="true" data-toggle="popover" data-placement="top"
+											title="Genial"></i>
+										<i class="far fa-meh-blank py-2 px-1 rate-popover" data-index="4"
+											data-html="true" data-toggle="popover" data-placement="top"
+											title="Excelente"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<h6>Comentarios</h6>
+					<div class="row">
+						<div class="col-md">
+							<div class="form-group">
+								<textarea class="form-control" placeholder="Inserta tus comentarios aquí"
+									rows="3" id="rate-comment" maxlength="140" style="resize:none"></textarea>
+									<span class="badge badge-light mt-2" id="count_message"></span>
+							</div>
+							<div class="alert alert-danger mt-4" role="alert" id="rate-notification">
+								Por favor, valora tu experiencia con las caritas. Los comentarios no son necesarios, ¡pero nos ayudarán mucho! <i class="fa fa-laugh"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+				<button type="button" class="btn btn-primary" id="rate-send">Enviar</button>
+			</div>
+		</div>
+	</div>
 </div>
 {% endblock %}

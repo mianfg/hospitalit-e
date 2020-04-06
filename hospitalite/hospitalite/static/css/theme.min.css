@@ -6,6 +6,14 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+ .rate-popover{
+  color: #c4c4c4;
+}
+.live{
+  color: #2a415e;
+}
+
+
 
  .lds-ring {
     display: inline-block;
@@ -178,6 +186,7 @@ a {
   a:hover {
     color: #1e2e43;
     text-decoration: none; }
+
 
 a:not([href]):not([tabindex]) {
   color: inherit;

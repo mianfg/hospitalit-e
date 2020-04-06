@@ -9,10 +9,22 @@
                 <strong>Hospitalit-e</strong> es una aplicación web para <strong>conectar personas</strong>
             </div>
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary">Iniciar sesión</button>
-                <button type="button" class="btn btn-secondary">Registrarse</button>
+                <button id="login-button" type="button" class="btn btn-primary">Iniciar sesión</button>
+                <button id="register-button" type="button" class="btn btn-secondary">Registrarse</button>
               </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+
+{% block additional_scripts %}
+<script>
+document.getElementById("login-button").onclick = function() {
+    window.location.href = "/login";
+}
+document.getElementById("register-button").onclick = function() {
+    window.location.href = "/register";
+}
+</script>
 {% endblock %}

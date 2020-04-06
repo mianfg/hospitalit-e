@@ -33,7 +33,8 @@ class MatchConsumer(AsyncConsumer):
 
         message = {
             "type"  : "connect",
-            "group" : self.group
+            "group" : self.group,
+            "username"  : self.current_user.username
         }
 
         await self.send({
@@ -46,6 +47,10 @@ class MatchConsumer(AsyncConsumer):
         message = json.loads(event['text'])
         message_type = message['type']
         
+        if message_type == 'rating':
+            print("GOT RATING")
+            await self.add_rating(message)
+
         if message_type == 'do_queue':
             message = {
                 "type" : "queued"
@@ -64,6 +69,8 @@ class MatchConsumer(AsyncConsumer):
                     "type" : "new_no_voluntario"
                 }
 
+                print("ENVIANDO MENSAJE A VLUNTARIOS")
+
                 await self.channel_layer.group_send(
                     'voluntario',
                     {
@@ -71,14 +78,15 @@ class MatchConsumer(AsyncConsumer):
                         "text" : json.dumps(message)
                     }
                 )
-        elif message_type == 'check_matches':
-            match_username = await self.get_user_from_queue()
+        if message_type == 'check_matches':
+            match_user, match = await self.get_user_from_queue()
             unique = str(uuid.uuid1()).replace("-", "")
 
-            if match_username != "":
-                match_username = match_username.username #WIP
+            if match:   # si hay un match
+                match_username = match_user.username
                 data = await self.get_user_serialized(match_username)
                 data['uuid'] = unique
+                data['match_id'] = match.id
 
                 message = {
                     "type" : "match",
@@ -92,6 +100,7 @@ class MatchConsumer(AsyncConsumer):
 
                 data = await self.get_user_serialized(self.current_user.username)
                 data['uuid'] = unique
+                data['match_id'] = match.id
 
                 message = {
                     "type" : "match",
@@ -104,6 +113,8 @@ class MatchConsumer(AsyncConsumer):
                         "text" : json.dumps(message)
                     }
                 )
+
+
 
     async def send_message(self, event):
         await self.send({
@@ -138,12 +149,18 @@ class MatchConsumer(AsyncConsumer):
         
         if MatchingQueue.objects.all():
             q = MatchingQueue.objects.earliest('timestamp')
-            username = q.username
+            user = q.username
+            m = Match(
+                username1=self.current_user,
+                username2=user
+            )
+            m.save()
             q.delete()
         else:
-            username = ""
+            user = None
+            m = None
         
-        return username
+        return user, m
     
     @database_sync_to_async
     def remove_user_from_queue(self, user):
@@ -153,3 +170,13 @@ class MatchConsumer(AsyncConsumer):
     def get_user_serialized(self, username):
         u = Usuario.objects.filter(username=username)[0]
         return u.serialize()
+    
+    @database_sync_to_async
+    def add_rating(self, message):
+        r = Rating(
+            id_match=Match.objects.get(id=message['match_id']),
+            from_user=Usuario.objects.get(username=message['from']),
+            rating=message['rating'],
+            comentario=message['comment']
+        )
+        r.save()

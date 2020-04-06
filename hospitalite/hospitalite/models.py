@@ -60,18 +60,16 @@ class Match(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     username1 = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING, related_name='usuario1')
     username2 = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING, related_name='usuario2')
-    puntuacion1 = models.IntegerField()
-    puntuacion2 = models.IntegerField()
 
-class Feedback(models.Model):
+class Rating(models.Model):
     id_match = models.ForeignKey(Match, on_delete=models.DO_NOTHING)
-    username = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING)
+    from_user = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING)
     timestamp = models.DateTimeField(auto_now_add=True)
-    estrellas = models.IntegerField()
-    comentarios = models.CharField(max_length=140)
+    rating = models.IntegerField()
+    comentario = models.CharField(max_length=140)
 
     class Meta:
-        unique_together = (("id_match", "username"),)
+        unique_together = (("id_match", "from_user"),)
 
 class MatchingQueue(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
