@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from hospitalite.views import home
 from hospitalite.views import registro
 from hospitalite.views import login
 from hospitalite.views import logout
@@ -25,6 +26,7 @@ from hospitalite.views import matching
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home.index, name="home"),
     path('registro/', registro.index, name="registro"),
     path('registro_voluntario/', registro_voluntario.index, name="registro_voluntario"),
     path('login/', login.index, name="login"),
