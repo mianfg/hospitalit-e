@@ -15,7 +15,7 @@ class Usuario (AbstractUser):
     localidad = models.CharField(max_length = 20)
     skype = models.CharField(max_length = 15)
     facetime = models.CharField(max_length = 20)
-    edad = models.IntegerField(default=-1)
+    edad = models.IntegerField(default=-1) # TODO CAMBIAR A FECHA NAC
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
