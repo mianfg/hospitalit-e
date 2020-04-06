@@ -3,3 +3,4 @@ hospitalite/hospitalite/__pycache__
 migrations/
 hospitalite/hospitalite/views/__pycache__/
 venv/
+env/
