@@ -34,7 +34,7 @@ def index(request):
                 # Hacemos el login manualmente
                 do_login(request, user)
                 # Y le redireccionamos a la portada
-                return redirect('/modificar_datos')
+                return redirect('/')
 
     # Si llegamos al final renderizamos el formulario
     return render(request, "login.html", {'form': form, 'error_login': False})
